@@ -23,11 +23,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "announcements",
-    "users",
-    "rest_framework",
-    "django_filters",
-    "rest_framework_simplejwt",
-    "drf_yasg",
+
+
 ]
 
 MIDDLEWARE = [
@@ -111,7 +108,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "users.User"
+# AUTH_USER_MODEL = "users.User"
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
