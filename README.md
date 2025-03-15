@@ -67,7 +67,7 @@ django-admin startproject config .
 
 1. Создайте приложение bulletinboard
 ````
-python manage.py startapp bulletinboard
+python manage.py startapp announcements
 python manage.py startapp users
 ````
 2. Зарегистрируйте приложения в settings.py
