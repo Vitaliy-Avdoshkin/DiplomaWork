@@ -58,6 +58,8 @@ poetry add django
 poetry add redis
 poetry add djangorestframework-simplejwt
 poetry add Pillow
+poetry add django-cors-headers
+
 ````
 
 6. Инициализируйте django-проект внутри текущей директории

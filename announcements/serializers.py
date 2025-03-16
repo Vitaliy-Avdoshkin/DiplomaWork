@@ -13,7 +13,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ("id", "text", "rating", "created_at", "announcement", "owner")
+        fields = ("id", "text", "created_at", "announcement", "owner")
         validators = [ForbiddenWordValidator(review_text="text")]
 
 
@@ -30,10 +30,8 @@ class AnnouncementSerializer(serializers.ModelSerializer):
             "title",
             "price",
             "description",
-            "image",
             "created_at",
             "owner",
-            "average_rating",
         )
         validators = [
             ForbiddenWordValidator(
@@ -43,16 +41,6 @@ class AnnouncementSerializer(serializers.ModelSerializer):
                 title="title", description="description", price="price"
             ),
         ]
-
-    def get_average_rating(self, obj):
-        """Получаем общий рейтинг для данного объявления"""
-        reviews = obj.announcement_reviews.all()
-
-        if reviews.exists():
-            total_rating = sum(review.rating for review in reviews)
-            average_rating = total_rating / reviews.count()
-            return round(average_rating, 2)
-        return 0
 
 
 class AnnouncementRetrieveSerializer(serializers.ModelSerializer):
@@ -67,7 +55,6 @@ class AnnouncementRetrieveSerializer(serializers.ModelSerializer):
             "title",
             "price",
             "description",
-            "image",
             "created_at",
             "owner",
             "announcement_reviews",

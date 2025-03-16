@@ -10,7 +10,6 @@ class AnnouncementAdmin(admin.ModelAdmin):
         "title",
         "price",
         "description",
-        "image",
         "created_at",
         "owner",
     )
@@ -25,6 +24,5 @@ class ReviewAdmin(admin.ModelAdmin):
         "owner",
         "announcement",
         "created_at",
-        "rating",
     )
     search_fields = ("owner",)

@@ -15,7 +15,6 @@ class Announcement(models.Model):
         verbose_name="Цена товара", help_text="Укажите стоимость товара"
     )
     description = models.TextField(null=True, blank=True, verbose_name="Описание")
-    image = models.ImageField(upload_to="announcement/photo", null=True)
     owner = models.ForeignKey(
         User,
         verbose_name="Владелец объявления",
@@ -61,11 +60,6 @@ class Review(models.Model):
     created_at = models.DateTimeField(
         verbose_name="Дата создания отзыва",
         auto_now_add=True,
-    )
-    rating = models.IntegerField(
-        verbose_name="Оценка",
-        help_text="Оцените объявление от 1 до 5",
-        choices=[(i, str(i)) for i in range(1, 6)],
     )
 
     def __str__(self):
