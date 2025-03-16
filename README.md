@@ -94,6 +94,7 @@ python3 manage.py loaddata fixture_announcements fixture_review.json fixture_use
 python3 manage.py csu
 ````
 12. Для деплоя проекта на Docker
+
 Запуск:
 ````
 docker-compose up -d --build
@@ -119,4 +120,3 @@ http://localhost:8000/swagger/ для Swagger UI
 http://localhost:8000/redoc/ для Redoc
 ```` 
 Реализована настройка CORS.
-API DRF разрешает запросы от указанных доменов, что позволяет использовать его из веб-страниц, размещенных на других доменах.
