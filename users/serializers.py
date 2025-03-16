@@ -36,7 +36,6 @@ class ProfileUserSerializer(serializers.ModelSerializer):
             "announcements",
             "author_reviews",
             "received_reviews",
-            "average_rating",
         )
 
     def get_received_reviews(self, obj):
@@ -50,17 +49,6 @@ class ProfileUserSerializer(serializers.ModelSerializer):
         )
 
         return ReviewSerializer(paginated_reviews, many=True).data
-
-    def get_average_rating(self, obj):
-        """Получаем общий рейтинг"""
-        announcements = obj.announcements.all()
-        reviews = Review.objects.filter(announcement__in=announcements)
-
-        if reviews.exists():
-            total_rating = sum(review.rating for review in reviews)
-            average_rating = total_rating / reviews.count()
-            return round(average_rating, 2)
-        return 0
 
 
 class ProfileOwnerAdSerializer(serializers.ModelSerializer):
@@ -78,7 +66,6 @@ class ProfileOwnerAdSerializer(serializers.ModelSerializer):
             "avatar",
             "announcements",
             "reviews",
-            "overall_rating",
         )
 
     def get_reviews(self, obj):
@@ -91,14 +78,3 @@ class ProfileOwnerAdSerializer(serializers.ModelSerializer):
             reviews, self.context["request"]
         )
         return ReviewSerializer(paginated_reviews, many=True).data
-
-    def get_overall_rating(self, obj):
-        """Получаем общий рейтинг"""
-        announcements = obj.announcements.all()
-        reviews = Review.objects.filter(announcement__in=announcements)
-
-        if reviews.exists():
-            total_rating = sum(review.rating for review in reviews)
-            average_rating = total_rating / reviews.count()
-            return round(average_rating, 2)
-        return 0
