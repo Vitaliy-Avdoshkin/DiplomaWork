@@ -23,6 +23,7 @@ pytest = "^8.3.5"
 pillow = "^11.1.0"
 django-cors-headers = "^4.7.0"
 coverage = "^7.6.12"
+docker = "^7.1.0"
 
 
 [tool.poetry.group.lint.dependencies]

@@ -1,6 +1,6 @@
 # Vitaliy_Avdoshkin_DiplomaWork
 
-# Приложение для сайта типа "Доска объявлений"
+# SPA-Приложение для сайта типа "Доска объявлений"
 
 ## Описание
 
@@ -23,12 +23,15 @@ git clone https://github.com/Vitaliy-Avdoshkin/DiplomaWork.git
 ```
 ## Конфигурация
 1. Создайте виртуальное окружение poetry.
-
 ```
 poetry env
 ```
-
-2. Установите библиотеки Flake8, black, isort, mypy в группу lint.
+2. Примените зависимости с файла pyproject.toml
+```
+poetry install
+```
+3. Создайте файл .env и внесите все чувствительные параметры указанные в файле .env.sample
+4. Установите библиотеки Flake8, black, isort, mypy в группу lint.
 
 ```commandline
 poetry add --group lint flake8
@@ -37,19 +40,18 @@ poetry add --group lint isort
 poetry add --group lint mypy
 ```
 
-3. Создайте файл .flake8 для настройки библиотеки flak8
+5. Создайте файл .flake8 для настройки библиотеки flak8
 
-
-4. Настройте установленные библиотеки, используя кода ниже
+6. Настройте установленные библиотеки, используя кода ниже
 
 Файл .flake8
 
 ```
 [flake8]
-max-line-length = 119
+max-line-length = 140
 ```
 
-5. Установите требуемые библиотеки:
+7. Установите требуемые библиотеки:
 ````commandline
 poetry add requests
 poetry add python-dotenv
@@ -59,31 +61,62 @@ poetry add redis
 poetry add djangorestframework-simplejwt
 poetry add Pillow
 poetry add django-cors-headers
+poetry add docker
 
 ````
 
-6. Инициализируйте django-проект внутри текущей директории
+8. Инициализируйте django-проект внутри текущей директории
 ````
 django-admin startproject config .
 ````
 
 ## Приложение Доска объявлений:
 
-1. Создайте приложение bulletinboard
+1. Создайте приложение announcements
 ````
 python manage.py startapp announcements
 python manage.py startapp users
 ````
 2. Зарегистрируйте приложения в settings.py
-3. Для приложения lms создайте модели: Course, Lesson, Subscription
-4. Для приложения users создайте модели: User, Payment
+3. Для приложения announcements создайте модели: Announcements, Review
+4. Для приложения users создайте модели: User
 5. Опишите CRUD для всех моделей на основе ViewSet и Generic-классов
 6. Создайте сериализаторы
 7. Настройте права доступа
 8. Опишите требуемые валидаторы
 9. Добавьте пагинацию
-10. Протестируйте полученный код
-11. Поключите и настройте вывод документации для проекта
-12. Настройте celery. Запуск селери и воркер : celery -A config worker --beat --scheduler django --loglevel=info
-13. Запуск селери и воркер : celery -A config worker --beat --scheduler django --loglevel=info
-14. Как запускать с докер из консоли: Ввести команду для сборки образов и запуска контейнеров: docker-compose up -d —build
+10. Для заполнения базы данных примените подготовленные фикстуры: fixture_announcements, fixture_review.json, fixture_users.json
+````
+python3 manage.py loaddata fixture_announcements fixture_review.json fixture_users.json
+````
+11. В случае необходимости базы данных с суперпользователем, то выполните команду csu
+````
+python3 manage.py csu
+````
+12. Для деплоя проекта на Docker
+    Запуск:
+````
+docker-compose up -d --build
+````   
+Остановка:
+```` 
+docker compose down
+```` 
+
+## Тестирование проекта
+
+### Запуск тестов 
+```` 
+python manage.py test
+```` 
+
+## Документация и безопасность
+
+В файле urls.py создана схема документации. 
+Просмотр документации доступен по ссылкам:
+```` 
+http://localhost:8000/swagger/ для Swagger UI 
+http://localhost:8000/redoc/ для Redoc
+```` 
+Реализована настройка CORS.
+API DRF разрешает запросы от указанных доменов, что позволяет использовать его из веб-страниц, размещенных на других доменах.
