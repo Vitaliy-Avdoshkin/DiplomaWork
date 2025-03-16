@@ -94,7 +94,7 @@ python3 manage.py loaddata fixture_announcements fixture_review.json fixture_use
 python3 manage.py csu
 ````
 12. Для деплоя проекта на Docker
-    Запуск:
+Запуск:
 ````
 docker-compose up -d --build
 ````   
