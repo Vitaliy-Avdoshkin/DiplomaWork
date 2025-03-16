@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 
 from announcements.paginators import ADSPagination
 from config.settings import EMAIL_HOST_USER
-from users.models import CustomsUser
+from users.models import User
 from users.permissions import IsModer, IsUser
 from users.serializers import (
     CreateUserSerializer,
@@ -32,7 +32,7 @@ class UserCreateAPIView(CreateAPIView):
     """Контроллер для создание пользователя"""
 
     serializer_class = CreateUserSerializer
-    queryset = CustomsUser.objects.all()
+    queryset = User.objects.all()
     permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
@@ -60,7 +60,7 @@ class EmailConfirmAPIView(APIView):
     def get(self, request, token):
         """Подтверждение email-адреса пользователя"""
 
-        user = get_object_or_404(CustomsUser, token=token)
+        user = get_object_or_404(User, token=token)
         user.is_active = True
         user.save(update_fields=["is_active"])
         return Response(
@@ -82,7 +82,7 @@ class PasswordResetAPIView(APIView):
             )
 
         try:
-            user = CustomsUser.objects.get(email=email)
+            user = User.objects.get(email=email)
         except ObjectDoesNotExist:
             return Response(
                 {
@@ -123,7 +123,7 @@ class PasswordResetConfirmAPIView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        user = get_object_or_404(CustomsUser, pk=uid)
+        user = get_object_or_404(User, pk=uid)
 
         if user is not None and user.token == token:
             user.set_password(password)
@@ -166,7 +166,7 @@ class PasswordResetConfirmAPIView(APIView):
 class UserProfileViewSet(viewsets.ModelViewSet):
     """Контроллер просмотра профиля пользователя"""
 
-    queryset = CustomsUser.objects.all()
+    queryset = User.objects.all()
     pagination_class = ADSPagination
 
     def get_permissions(self):
@@ -184,7 +184,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return ProfileOwnerAdSerializer
 
     def get_queryset(self):
-        return CustomsUser.objects.all()
+        return User.objects.all()
 
     def perform_update(self, serializer):
         serializer.save()

@@ -1,7 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 
-from users.models import CustomsUser
+from users.models import User
 
 
 @pytest.fixture
@@ -17,9 +17,7 @@ def user_is_owner_fixture():
     """
     фикстура модели User
     """
-    user = CustomsUser.objects.create(
-        email="test@test.ru", password="Qwerty", is_active=True
-    )
+    user = User.objects.create(email="test@test.ru", password="Qwerty", is_active=True)
     return user
 
 
@@ -28,7 +26,7 @@ def user_fixture():
     """
     фикстура модели User без авторизации
     """
-    user = CustomsUser.objects.create(
+    user = User.objects.create(
         email="test1@test.ru", password="Qwerty", is_active=True, token="123test"
     )
     return user
@@ -39,7 +37,7 @@ def admin_fixture():
     """
     фикстура модели Admin
     """
-    user = CustomsUser.objects.create(
+    user = User.objects.create(
         email="admin@test.ru", password="Qwerty", is_active=True, is_staff=True
     )
     return user

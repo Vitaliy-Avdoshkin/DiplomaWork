@@ -3,7 +3,7 @@ from django.core import mail
 from django.urls import reverse
 from rest_framework import status
 
-from users.models import CustomsUser
+from users.models import User
 
 
 @pytest.mark.django_db
@@ -22,8 +22,8 @@ def test_user_create(client):
     response = client.post(url, data)
 
     assert response.status_code == status.HTTP_201_CREATED
-    assert CustomsUser.objects.count() == 1
-    user = CustomsUser.objects.first()
+    assert User.objects.count() == 1
+    user = User.objects.first()
     assert user.email == data["email"]
     assert user.is_active is False
     assert user.check_password(data["password"])
@@ -96,7 +96,7 @@ def test_user_delete(api_client, user_fixture, user_is_owner_fixture):
     response = api_client.delete(url)
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
-    assert CustomsUser.objects.count() == 1
+    assert User.objects.count() == 1
 
 
 @pytest.mark.django_db

@@ -1,6 +1,6 @@
 from django.db import models
 
-from users.models import CustomsUser
+from users.models import User
 
 
 class Announcement(models.Model):
@@ -17,7 +17,7 @@ class Announcement(models.Model):
     description = models.TextField(null=True, blank=True, verbose_name="Описание")
     image = models.ImageField(upload_to="announcement/photo", null=True)
     owner = models.ForeignKey(
-        CustomsUser,
+        User,
         verbose_name="Владелец объявления",
         blank=True,
         null=True,
@@ -45,7 +45,7 @@ class Review(models.Model):
         help_text="Расскажите о товаре и о ваших впечатлениях",
     )
     owner = models.ForeignKey(
-        CustomsUser,
+        User,
         on_delete=models.SET_NULL,
         verbose_name="Владелец отзыва",
         blank=True,

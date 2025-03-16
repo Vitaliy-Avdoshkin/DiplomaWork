@@ -57,6 +57,7 @@ poetry add psycopg2
 poetry add django
 poetry add redis
 poetry add djangorestframework-simplejwt
+poetry add Pillow
 ````
 
 6. Инициализируйте django-проект внутри текущей директории

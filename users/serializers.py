@@ -4,14 +4,14 @@ from announcements.models import Review
 from announcements.paginators import ADSPagination
 from announcements.serializers import AnnouncementSerializer, ReviewSerializer
 
-from .models import CustomsUser
+from .models import User
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
     """Сериализатор для создания профиля"""
 
     class Meta:
-        model = CustomsUser
+        model = User
         fields = "__all__"
 
 
@@ -24,7 +24,7 @@ class ProfileUserSerializer(serializers.ModelSerializer):
     average_rating = serializers.SerializerMethodField()
 
     class Meta:
-        model = CustomsUser
+        model = User
         fields = (
             "id",
             "email",
@@ -71,7 +71,7 @@ class ProfileOwnerAdSerializer(serializers.ModelSerializer):
     overall_rating = serializers.SerializerMethodField()
 
     class Meta:
-        model = CustomsUser
+        model = User
         fields = (
             "first_name",
             "phone_number",

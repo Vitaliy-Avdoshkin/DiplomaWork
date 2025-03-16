@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from users.models import CustomsUser
+from users.models import User
 
 
-@admin.register(CustomsUser)
+@admin.register(User)
 class CustomUserAdmin(admin.ModelAdmin):
     """ "Отображение информации в панеле админа"""
 
