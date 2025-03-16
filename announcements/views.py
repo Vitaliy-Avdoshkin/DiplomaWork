@@ -18,37 +18,37 @@ from users.permissions import IsModer, IsOwner
 @method_decorator(
     name="list",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для получения списка всех привычек"
+        operation_description="Контроллер для получения списка всех пользователей"
     ),
 )
 @method_decorator(
     name="retrieve",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для получения конкретной привычки"
+        operation_description="Контроллер для получения информации об конкретном пользователе"
     ),
 )
 @method_decorator(
     name="create",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для создания привычки"
+        operation_description="Контроллер для создания пользователя"
     ),
 )
 @method_decorator(
     name="update",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для обновления информации о привычке"
+        operation_description="Контроллер для обновления информации о пользователе"
     ),
 )
 @method_decorator(
     name="partial_update",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для частичного изменения информации о привычке"
+        operation_description="Контроллер для обновления определенной информации о пользователе"
     ),
 )
 @method_decorator(
     name="destroy",
     decorator=swagger_auto_schema(
-        operation_description="Контроллер для удаления привычки"
+        operation_description="Контроллер для удаления пользователя"
     ),
 )
 class AnnouncementViewSet(viewsets.ModelViewSet):

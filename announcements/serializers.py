@@ -21,7 +21,6 @@ class AnnouncementSerializer(serializers.ModelSerializer):
     """Сериализатор для объявления"""
 
     price = serializers.IntegerField(validators=(price_zero_validator,))
-    average_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = Announcement

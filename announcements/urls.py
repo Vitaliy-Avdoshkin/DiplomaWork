@@ -14,7 +14,7 @@ app_name = AnnouncementsConfig.name
 
 
 router = DefaultRouter()
-router.register(r"announcement", AnnouncementViewSet, basename="announcement")
+router.register("", AnnouncementViewSet)
 
 urlpatterns = [
     path("review_create/", ReviewACreateAPIView.as_view(), name="review_create"),

@@ -21,7 +21,6 @@ class ProfileUserSerializer(serializers.ModelSerializer):
     announcements = AnnouncementSerializer(many=True, read_only=True)
     author_reviews = ReviewSerializer(many=True, read_only=True)
     received_reviews = serializers.SerializerMethodField()
-    average_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -56,7 +55,6 @@ class ProfileOwnerAdSerializer(serializers.ModelSerializer):
 
     announcements = AnnouncementSerializer(many=True, read_only=True)
     reviews = serializers.SerializerMethodField()
-    overall_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = User

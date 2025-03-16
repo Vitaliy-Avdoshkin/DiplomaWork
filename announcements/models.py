@@ -1,5 +1,6 @@
 from django.db import models
 
+from config.settings import AUTH_USER_MODEL
 from users.models import User
 
 
@@ -16,7 +17,7 @@ class Announcement(models.Model):
     )
     description = models.TextField(null=True, blank=True, verbose_name="Описание")
     owner = models.ForeignKey(
-        User,
+        AUTH_USER_MODEL,
         verbose_name="Владелец объявления",
         blank=True,
         null=True,
@@ -44,7 +45,7 @@ class Review(models.Model):
         help_text="Расскажите о товаре и о ваших впечатлениях",
     )
     owner = models.ForeignKey(
-        User,
+        AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         verbose_name="Владелец отзыва",
         blank=True,
