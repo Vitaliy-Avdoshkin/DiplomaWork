@@ -24,6 +24,7 @@ pillow = "^11.1.0"
 django-cors-headers = "^4.7.0"
 coverage = "^7.6.12"
 docker = "^7.1.0"
+pytest-cov = "^6.0.0"
 
 
 [tool.poetry.group.lint.dependencies]
@@ -31,6 +32,12 @@ flake8 = "^7.1.2"
 black = "^25.1.0"
 isort = "^6.0.1"
 mypy = "^1.15.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+pytest-cov = "^6.0.0"
+pytest-django = "^4.10.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]

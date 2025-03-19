@@ -62,13 +62,51 @@ poetry add djangorestframework-simplejwt
 poetry add Pillow
 poetry add django-cors-headers
 poetry add docker
-
 ````
-
 8. Инициализируйте django-проект внутри текущей директории
 ````
 django-admin startproject config .
 ````
+
+## Тестирование
+
+1. Для тестирования кода установите Pytest
+```
+poetry add --group dev pytest-django
+```
+2. Создайте файл pytest.ini и настройте библиотеку pytest, используя код ниже
+```
+[pytest]
+DJANGO_SETTINGS_MODULE = config.settings
+python_files = tests.py tests_*.py *_tests.py
+filterwarnings =
+    ignore::django.utils.deprecation.RemovedInDjango60Warning
+```    
+3. Установите Code coverage для расчета процента протестированного кода
+```
+poetry add --group dev pytest-cov
+```
+Запуск Code coverage
+```commandline
+pytest --cov
+```
+Чтобы сгенерировать отчет о покрытии в HTML-формате, используйте следующую команду
+```commandline
+pytest --cov=src --cov-report=html
+```
+Отчет будет сгенерирован в папке
+```
+htmlcov
+```
+ и храниться в файле с названием 
+```
+index.html
+```
+
+4. Для тестирования вывода в консоль используйте специальную фикстуру
+```
+capsys
+```
 
 ## Приложение Доска объявлений:
 
@@ -102,13 +140,6 @@ docker-compose up -d --build
 Остановка:
 ```` 
 docker compose down
-```` 
-
-## Тестирование проекта
-
-### Запуск тестов 
-```` 
-python manage.py test
 ```` 
 
 ## Документация и безопасность
