@@ -86,26 +86,14 @@ filterwarnings =
 ```
 poetry add --group dev pytest-cov
 ```
-Запуск Code coverage
+Запуск тестирования
 ```commandline
-pytest --cov
-```
-Чтобы сгенерировать отчет о покрытии в HTML-формате, используйте следующую команду
-```commandline
-pytest --cov=src --cov-report=html
-```
-Отчет будет сгенерирован в папке
-```
-htmlcov
-```
- и храниться в файле с названием 
-```
-index.html
+pytest
 ```
 
-4. Для тестирования вывода в консоль используйте специальную фикстуру
-```
-capsys
+Запуск тестирования c Code coverage
+```commandline
+pytest --cov
 ```
 
 ## Приложение Доска объявлений:

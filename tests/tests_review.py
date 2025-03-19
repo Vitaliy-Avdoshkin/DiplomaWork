@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 
 from announcements.models import Review
-from users.tests.conftest import api_client, user_fixture, user_is_owner_fixture
+from tests.conftest import api_client, user_fixture, user_is_owner_fixture
 
 
 @pytest.mark.django_db

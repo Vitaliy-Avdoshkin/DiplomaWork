@@ -3,7 +3,8 @@ from django.urls import reverse
 from rest_framework import status
 
 from announcements.models import Announcement
-from users.tests.conftest import (admin_fixture, api_client, user_fixture, user_is_owner_fixture)
+from tests.conftest import api_client  # noqa: F811
+from tests.conftest import admin_fixture, user_fixture, user_is_owner_fixture
 
 
 @pytest.mark.django_db
