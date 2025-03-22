@@ -3,12 +3,14 @@ version: "3.12"
 services:
 
   redis:
+    container_name: redis
     image: redis:latest
     restart: on-failure
     expose:
       - "6379"
 
   app:
+    container_name: app
     build: .
     tty: true
     command: sh -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
@@ -18,7 +20,11 @@ services:
       - .env
 
   db:
+    container_name: db
     image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: "PASSWORD"
+      POSTGRES_NAME: "NAME"
     restart: on-failure
     env_file:
       - .env
