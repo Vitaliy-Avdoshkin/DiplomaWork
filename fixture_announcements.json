@@ -1,0 +1,46 @@
+[
+{
+    "model": "announcements.announcement",
+    "pk": 1,
+    "fields": {
+        "title": "Лосьон Лось Он",
+        "price": 100,
+        "description": "Лосьон для нелюбимых мужчин Лось Он",
+        "owner": 9,
+        "created_at": "2025-03-16"
+    }
+},
+{
+    "model": "announcements.announcement",
+    "pk": 2,
+    "fields": {
+        "title": "Мыло для лица Чистая морда",
+        "price": 175,
+        "description": "Чистая морда, пусть ваше лицо будет всегда не грязным",
+        "owner": 9,
+        "created_at": "2025-03-16"
+    }
+},
+{
+    "model": "announcements.announcement",
+    "pk": 3,
+    "fields": {
+        "title": "Циркулярная пила Три пальца",
+        "price": 9000,
+        "description": "Циркулярная пила Три пальца поможет вам в ремонте и выбивании информации из особо несговорчивых.\r\nВНИМАНИЕ! Не прощает невнимательности",
+        "owner": 8,
+        "created_at": "2025-03-16"
+    }
+},
+{
+    "model": "announcements.announcement",
+    "pk": 4,
+    "fields": {
+        "title": "Суп-пюре готовый замороженный Жри давай",
+        "price": 34,
+        "description": "Очень вкусный суп-пюре из овощей с курицей Жри давай. С любовью о близких",
+        "owner": 8,
+        "created_at": "2025-03-16"
+    }
+}
+]
